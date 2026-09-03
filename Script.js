@@ -417,23 +417,35 @@ document.addEventListener('DOMContentLoaded', () => {
        ========================================================================== */
     const initMobileNav = () => {
         const mobileMenu = document.getElementById('mobileMenu');
+        const mobileOverlay = document.getElementById('mobileOverlay');
         const openBtn = document.getElementById('openMenuBtn');
         const closeBtn = document.getElementById('closeMenuBtn');
         const mobileLinks = document.querySelectorAll('.mobile-nav .nav-link');
         if (!mobileMenu || !openBtn || !closeBtn) return;
 
-        openBtn.addEventListener('click', () => {
+        const openMobileNav = () => {
             mobileMenu.classList.add('open');
+            if (mobileOverlay) mobileOverlay.classList.add('open');
             document.body.style.overflow = 'hidden';
-        });
+        };
 
         const closeMobileNav = () => {
             mobileMenu.classList.remove('open');
+            if (mobileOverlay) mobileOverlay.classList.remove('open');
             document.body.style.overflow = '';
         };
 
+        openBtn.addEventListener('click', openMobileNav);
         closeBtn.addEventListener('click', closeMobileNav);
+        if (mobileOverlay) mobileOverlay.addEventListener('click', closeMobileNav);
         mobileLinks.forEach((link) => link.addEventListener('click', closeMobileNav));
+
+        // Close on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && mobileMenu.classList.contains('open')) {
+                closeMobileNav();
+            }
+        });
     };
 
     /* ==========================================================================

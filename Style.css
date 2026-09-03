@@ -82,7 +82,7 @@
 
 html {
     scroll-behavior: smooth;
-    scroll-padding-top: 90px;
+    scroll-padding-top: 70px;
     font-size: 15px; /* Compact, small beautiful typography baseline */
 }
 
@@ -797,6 +797,33 @@ body {
     cursor: pointer;
 }
 
+/* Mobile Overlay Backdrop */
+.mobile-nav-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1999;
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.mobile-nav-overlay.open {
+    opacity: 1;
+}
+
+@media (max-width: 868px) {
+    .mobile-nav-overlay {
+        display: block;
+        pointer-events: none;
+    }
+    .mobile-nav-overlay.open {
+        pointer-events: auto;
+    }
+}
+
 /* Mobile Drawer */
 .mobile-nav {
     position: fixed;
@@ -814,6 +841,7 @@ body {
     border-left: 1px solid var(--border-subtle);
     box-shadow: -10px 0 30px rgba(0,0,0,0.5);
     transition: right 0.45s var(--ease-out-expo);
+    overflow-y: auto;
 }
 
 .mobile-nav.open {
@@ -3307,31 +3335,7 @@ body.cursor-in-fan .cursor-ring {
     margin-top: 0.5rem;
 }
 
-/* Responsive */
-@media (max-width: 1024px) {
-    .about-container {
-        grid-template-columns: 1fr;
-        gap: 3.5rem;
-    }
-    .about-profile-card {
-        max-width: 440px;
-        margin: 0 auto;
-        width: 100%;
-    }
-    .about-pillars-grid {
-        grid-template-columns: 1fr;
-    }
-    .about-metrics-row {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1.5rem;
-    }
-}
-
-@media (max-width: 640px) {
-    .about-metrics-row {
-        grid-template-columns: 1fr 1fr;
-    }
-}
+/* Responsive rules for About section are handled in the main responsive block above */
 
 /* Light Mode Overrides */
 [data-theme="light"] .about-me-section {
@@ -3573,26 +3577,4 @@ body.cursor-in-fan .cursor-ring {
     fill: #1e255e;
 }
 
-/* Responsive */
-@media (max-width: 992px) {
-    .alliances-container {
-        grid-template-columns: 1fr;
-        gap: 3.5rem;
-    }
-    .alliances-desc {
-        max-width: 100%;
-    }
-}
-
-@media (max-width: 640px) {
-    .alliances-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1rem;
-    }
-    .partner-card {
-        height: 95px;
-    }
-}
-
-
-
+/* Responsive rules for Alliances section are handled in the main responsive block above */
