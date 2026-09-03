@@ -2190,46 +2190,64 @@ body.cursor-in-fan .cursor-ring {
 /* --------------------------------------------------------------------------
    Responsive Media Queries & Full Mobile Architecture
    -------------------------------------------------------------------------- */
+
+/* ---- 1200px: Large tablet / small laptop ---- */
 @media (max-width: 1200px) {
     .hero-graphic {
         margin-right: 0;
+        flex: 1;
+    }
+
+    .about-container {
+        grid-template-columns: 320px 1fr;
+        gap: 3rem;
     }
 }
 
+/* ---- 1024px: Tablet landscape ---- */
 @media (max-width: 1024px) {
     .process-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 1.5rem;
     }
-    
+
     .cta-card {
         flex-direction: column;
     }
-    
+
     .cta-right {
         border-left: none;
         border-top: 1px solid var(--border-subtle);
         padding: 3rem 5%;
-    }
-    
-    .service-card {
-        grid-template-columns: 50px 50px 1fr 35px;
-        padding: 2rem 1.5rem;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 2rem;
+        align-items: flex-start;
     }
 
     .hero-graphic {
         height: 440px;
     }
+
+    .alliances-container {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+
+    .alliances-desc {
+        max-width: 100%;
+    }
 }
 
+/* ---- 868px: Tablet portrait / large phone ---- */
 @media (max-width: 868px) {
     html {
         font-size: 14px;
     }
 
     .navbar {
-        height: 72px;
-        padding: 0 5%;
+        height: 68px;
+        padding: 0 4.5%;
     }
 
     .nav-links,
@@ -2238,11 +2256,13 @@ body.cursor-in-fan .cursor-ring {
     }
 
     .mobile-menu-btn {
-        display: block;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     .hero-wrapper {
-        padding-top: 72px;
+        padding-top: 68px;
     }
 
     .hero-container {
@@ -2250,7 +2270,7 @@ body.cursor-in-fan .cursor-ring {
         align-items: center;
         text-align: center;
         padding: 3rem 5% 2.5rem;
-        gap: 2.5rem;
+        gap: 2rem;
     }
 
     .hero-content {
@@ -2263,101 +2283,292 @@ body.cursor-in-fan .cursor-ring {
     .hero-description {
         margin-left: auto;
         margin-right: auto;
+        text-align: center;
+        max-width: 92%;
     }
 
     .cta-group {
         justify-content: center;
+        flex-wrap: wrap;
     }
 
     .hero-graphic {
         width: 100%;
         max-width: 420px;
-        height: 380px;
+        height: 360px;
         justify-content: center;
         margin-right: 0;
+        flex: none;
     }
 
-    .why-proxima-section,
-    .services-header,
-    .process-header {
+    .why-proxima-section {
         flex-direction: column;
         align-items: flex-start;
-        gap: 1.8rem;
+        gap: 1.5rem;
     }
 
-    .section {
-        padding: 5rem 5%;
-    }
-
-    .process-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .service-card {
-        grid-template-columns: 1fr;
-        gap: 0.9rem;
-        padding: 1.8rem 1.4rem;
-    }
-
-    .service-arrow {
-        display: none;
-    }
-
-    .cta-section {
-        padding: 5rem 5%;
-    }
-
-    .cta-left {
-        padding: 3.5rem 6%;
-    }
-
-    .cta-buttons {
+    .services-header,
+    .process-header {
         flex-direction: column;
         align-items: flex-start;
         gap: 1.2rem;
     }
 
-    .btn-phone {
-        padding-bottom: 2px;
+    .services-subtitle,
+    .process-subtitle {
+        max-width: 100%;
+    }
+
+    .section {
+        padding: 4.5rem 5%;
+    }
+
+    .process-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 1.2rem;
+    }
+
+    .cta-section {
+        padding: 4.5rem 5%;
+    }
+
+    .cta-left {
+        padding: 3rem 5%;
+    }
+
+    .cta-right {
+        padding: 2.5rem 5%;
+        flex-direction: column;
+    }
+
+    .cta-buttons {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .btn-email {
+        width: 100%;
+        justify-content: center;
     }
 
     .hero-footer {
         flex-direction: column;
         align-items: center;
         text-align: center;
-        gap: 0.8rem;
-        padding: 1.4rem 5%;
+        gap: 0.7rem;
+        padding: 1.2rem 5%;
     }
 
     .main-footer {
         flex-direction: column;
-        gap: 1.2rem;
+        gap: 1rem;
         text-align: center;
-        padding: 2.2rem 5%;
+        padding: 2rem 5%;
+    }
+
+    /* About section tablet */
+    .about-container {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+
+    .about-profile-card {
+        max-width: 440px;
+        margin: 0 auto;
+        width: 100%;
+    }
+
+    .about-pillars-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .about-metrics-row {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    /* Alliances */
+    .alliances-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
     }
 }
 
-@media (max-width: 480px) {
+/* ---- 640px: Small tablet / large phone ---- */
+@media (max-width: 640px) {
     html {
         font-size: 13.5px;
     }
 
+    .navbar {
+        height: 62px;
+        padding: 0 4%;
+    }
+
+    .logo-text {
+        font-size: 0.85rem;
+        letter-spacing: 1.5px;
+    }
+
+    .hero-wrapper {
+        padding-top: 62px;
+    }
+
+    .hero-container {
+        padding: 2.5rem 4% 2rem;
+        gap: 1.8rem;
+    }
+
     .hero-title {
-        font-size: 2.2rem;
-        letter-spacing: -1px;
+        font-size: clamp(1.9rem, 7vw, 2.5rem);
+        letter-spacing: -0.8px;
+    }
+
+    .hero-description {
+        font-size: 0.95rem;
+        max-width: 100%;
     }
 
     .hero-graphic {
+        max-width: 360px;
         height: 320px;
     }
 
+    .section {
+        padding: 4rem 4%;
+    }
+
+    .section-title {
+        font-size: clamp(1.8rem, 6vw, 2.6rem);
+    }
+
+    .why-title {
+        font-size: clamp(1.9rem, 6.5vw, 2.8rem);
+    }
+
+    .process-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .about-pillars-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .about-metrics-row {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.2rem;
+    }
+
+    .about-actions {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .about-actions .btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .alliances-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.9rem;
+    }
+
+    .partner-card {
+        height: 110px;
+        padding: 1rem;
+    }
+
+    .cta-title {
+        font-size: clamp(1.6rem, 5.5vw, 2.2rem);
+    }
+
+    .cta-buttons {
+        width: 100%;
+    }
+
+    .btn-email {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .consultant-name {
+        font-size: 1.5rem;
+    }
+}
+
+/* ---- 480px: Mobile phones ---- */
+@media (max-width: 480px) {
+    html {
+        font-size: 13px;
+    }
+
+    .navbar {
+        height: 60px;
+        padding: 0 4%;
+    }
+
+    .logo-text {
+        font-size: 0.8rem;
+        letter-spacing: 1px;
+    }
+
+    .hero-wrapper {
+        padding-top: 60px;
+    }
+
+    .hero-container {
+        padding: 2rem 4% 1.5rem;
+        gap: 1.5rem;
+    }
+
+    .hero-title {
+        font-size: clamp(1.75rem, 7.5vw, 2.2rem);
+        letter-spacing: -0.5px;
+        line-height: 1.15;
+    }
+
+    .hero-description {
+        font-size: 0.92rem;
+        margin-bottom: 2rem;
+    }
+
+    .cta-group {
+        flex-direction: column;
+        width: 100%;
+        gap: 1rem;
+    }
+
+    .btn {
+        width: 100%;
+        justify-content: center;
+        padding: 0.9rem 1.5rem;
+    }
+
+    .btn-secondary {
+        width: auto;
+        text-align: center;
+    }
+
+    .hero-graphic {
+        max-width: 300px;
+        height: 280px;
+    }
+
     .center-circle {
-        width: 105px;
-        height: 105px;
+        width: 110px;
+        height: 110px;
     }
 
     .center-circle h2 {
-        font-size: 1.6rem;
+        font-size: 1.65rem;
+    }
+
+    .center-circle span {
+        font-size: 0.55rem;
+        letter-spacing: 2.5px;
     }
 
     .bulb-svg {
@@ -2366,33 +2577,283 @@ body.cursor-in-fan .cursor-ring {
     }
 
     .orbit-label {
-        font-size: 0.6rem;
+        font-size: 0.58rem;
         letter-spacing: 2px;
     }
 
-    .label-process { top: 10%; right: 4%; }
-    .label-insight { right: -5%; }
-    .label-people { bottom: 10%; left: 4%; }
+    .label-process { top: 12%; right: 3%; }
+    .label-insight { right: -3%; top: 50%; }
+    .label-people { bottom: 12%; left: 3%; }
 
-    .btn {
-        width: 100%;
-        justify-content: center;
+    .section {
+        padding: 3.5rem 4%;
     }
 
-    .cta-left,
+    .section-title {
+        font-size: clamp(1.6rem, 6.5vw, 2.2rem);
+        letter-spacing: -0.8px;
+    }
+
+    .why-title {
+        font-size: clamp(1.7rem, 7vw, 2.4rem);
+        letter-spacing: -1px;
+    }
+
+    .process-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .process-card {
+        padding: 2rem 1.5rem;
+    }
+
+    .about-container {
+        gap: 2.5rem;
+    }
+
+    .about-profile-card {
+        padding: 2.2rem 1.5rem;
+    }
+
+    .about-avatar-wrap {
+        width: 120px;
+        height: 120px;
+    }
+
+    .about-avatar-initial {
+        font-size: 3.2rem;
+    }
+
+    .about-profile-name {
+        font-size: 1.3rem;
+    }
+
+    .about-pillars-grid {
+        grid-template-columns: 1fr;
+        gap: 0.9rem;
+    }
+
+    .about-metrics-row {
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+    }
+
+    .about-metric-number {
+        font-size: 1.5rem;
+    }
+
+    .alliances-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.8rem;
+    }
+
+    .partner-card {
+        height: 90px;
+        padding: 0.8rem;
+    }
+
+    .partner-logo {
+        max-height: 50px;
+        max-width: 110px;
+    }
+
+    .cta-section {
+        padding: 3.5rem 4%;
+    }
+
+    .cta-left {
+        padding: 2.5rem 4%;
+    }
+
     .cta-right {
-        padding: 2.5rem 5%;
+        padding: 2rem 4%;
+    }
+
+    .cta-title {
+        font-size: clamp(1.5rem, 6vw, 2rem);
+        letter-spacing: -0.8px;
+    }
+
+    .cta-desc {
+        font-size: 0.95rem;
+    }
+
+    .consultant-name {
+        font-size: 1.4rem;
+    }
+
+    .consultant-role {
+        font-size: 0.82rem;
     }
 
     .scroll-top-btn {
-        bottom: 1.2rem;
-        right: 1.2rem;
-        width: 38px;
-        height: 38px;
+        bottom: 1rem;
+        right: 1rem;
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
     }
 
     .toggle-cont {
-        transform: scale(0.65);
+        transform: scale(0.6);
+        transform-origin: center right;
+    }
+
+    .hero-footer {
+        padding: 1rem 4%;
+        font-size: 0.68rem;
+        letter-spacing: 2px;
+    }
+
+    .main-footer {
+        padding: 1.8rem 4%;
+        font-size: 0.78rem;
+    }
+}
+
+/* ---- 380px: Very small phones ---- */
+@media (max-width: 380px) {
+    html {
+        font-size: 12.5px;
+    }
+
+    .navbar {
+        height: 56px;
+        padding: 0 3.5%;
+    }
+
+    .logo-text {
+        font-size: 0.75rem;
+        letter-spacing: 0.8px;
+    }
+
+    .logo-diamond {
+        width: 22px;
+        height: 22px;
+    }
+
+    .logo-diamond span {
+        font-size: 0.65rem;
+    }
+
+    .hero-wrapper {
+        padding-top: 56px;
+    }
+
+    .hero-container {
+        padding: 1.8rem 3.5% 1.5rem;
+    }
+
+    .hero-title {
+        font-size: clamp(1.6rem, 8vw, 2rem);
+        line-height: 1.2;
+    }
+
+    .hero-description {
+        font-size: 0.88rem;
+    }
+
+    .hero-graphic {
+        max-width: 270px;
+        height: 250px;
+    }
+
+    .center-circle {
+        width: 95px;
+        height: 95px;
+    }
+
+    .center-circle h2 {
+        font-size: 1.45rem;
+    }
+
+    .bulb-svg {
+        width: 55px;
+        height: 55px;
+    }
+
+    .orbit-label {
+        font-size: 0.52rem;
+        letter-spacing: 1.5px;
+    }
+
+    .label-process { top: 10%; right: 1%; }
+    .label-insight { right: -2%; }
+    .label-people { bottom: 10%; left: 1%; }
+
+    .section {
+        padding: 3rem 3.5%;
+    }
+
+    .section-title {
+        font-size: clamp(1.5rem, 7vw, 1.9rem);
+    }
+
+    .about-profile-card {
+        padding: 1.8rem 1.2rem;
+    }
+
+    .about-avatar-wrap {
+        width: 100px;
+        height: 100px;
+    }
+
+    .about-avatar-initial {
+        font-size: 2.8rem;
+    }
+
+    .about-metrics-row {
+        grid-template-columns: 1fr 1fr;
+        gap: 0.8rem;
+    }
+
+    .about-metric-number {
+        font-size: 1.3rem;
+    }
+
+    .alliances-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.65rem;
+    }
+
+    .partner-card {
+        height: 80px;
+        padding: 0.6rem;
+    }
+
+    .partner-logo {
+        max-height: 42px;
+        max-width: 90px;
+    }
+
+    .cta-title {
+        font-size: clamp(1.4rem, 7vw, 1.8rem);
+    }
+
+    .consultant-name {
+        font-size: 1.2rem;
+    }
+
+    .toggle-cont {
+        transform: scale(0.55);
+    }
+
+    .mobile-menu-btn {
+        font-size: 1.3rem;
+    }
+
+    .process-card {
+        padding: 1.8rem 1.2rem;
+    }
+
+    .btn {
+        padding: 0.8rem 1.2rem;
+        font-size: 0.78rem;
+    }
+
+    .main-footer {
+        padding: 1.5rem 3.5%;
     }
 }
 
