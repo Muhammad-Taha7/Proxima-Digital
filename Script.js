@@ -26,16 +26,16 @@ document.addEventListener('DOMContentLoaded', () => {
         const statusText = document.getElementById('loaderStatus');
         if (!preloader || !progressBar || !percentText) return;
 
-        // Sequential status milestones over 5000ms (5 seconds)
+        // Sequential status milestones scaled to total duration
         const milestones = [
             { at: 0, text: 'INITIALIZING SPEED ENGINE...' },
-            { at: 1200, text: 'CONFIGURING ERPNEXT PIPELINES...' },
-            { at: 2500, text: 'OPTIMIZING BUSINESS WORKFLOWS...' },
-            { at: 3800, text: 'SYNCHRONIZING INTERFACE CLARITY...' },
-            { at: 4700, text: 'SYSTEMS ONLINE. WELCOME.' }
+            { at: 250, text: 'CONFIGURING ERPNEXT PIPELINES...' },
+            { at: 500, text: 'OPTIMIZING BUSINESS WORKFLOWS...' },
+            { at: 750, text: 'SYNCHRONIZING INTERFACE CLARITY...' },
+            { at: 900, text: 'SYSTEMS ONLINE. WELCOME.' }
         ];
 
-        const TOTAL_DURATION = 1000; // 5 seconds exact
+        const TOTAL_DURATION = 1000;
         const startTime = performance.now();
 
         const updateLoader = (now) => {
