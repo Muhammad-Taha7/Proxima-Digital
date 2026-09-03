@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <!-- Essential Meta Tags & SEO -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proxima Digital | ERPNext Implementation &amp; Business Consulting</title>
+    <meta name="description" content="Proxima Digital bridges complex operations and human clarity with expert ERPNext implementation, strategic business consulting, and custom workflow design.">
+    <meta name="keywords" content="ERPNext, ERP Consulting, Business Consulting, Digital Transformation, ERP Implementation, Adil Usman, Enterprise Software">
+    <meta name="author" content="Proxima Digital">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / Social Sharing Meta Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://proximadigital.com/">
+    <meta property="og:title" content="Proxima Digital | ERPNext &amp; Business Consulting">
+    <meta property="og:description" content="Turning complex enterprise operations into connected, practical systems with ERPNext expertise.">
+    <meta property="og:image" content="https://proximadigital.com/og-image.jpg">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Proxima Digital | ERPNext &amp; Business Consulting">
+    <meta name="twitter:description" content="Turning complex enterprise operations into connected, practical systems with ERPNext expertise.">
+
+    <!-- Preconnect & Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,300;0,400;0,600;1,400&family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Clean External Stylesheet -->
+    <link rel="stylesheet" href="Style.css">
+</head>
+<body>
+
+    <!-- ==========================================
+         1. 5-SECOND SPEEDER ANIMATION PRELOADER
+         ========================================== -->
+    <aside id="preloader" aria-label="Loading animation">
+        <div class="longfazers">
+            <span></span><span></span><span></span><span></span>
+        </div>
+
+        <div class="loader">
+            <span><span></span><span></span><span></span><span></span></span>
+            <div class="base">
+                <span></span>
+                <div class="face"></div>
+            </div>
+        </div>
+
+        <div class="loader-caption">
+            <div class="loader-brand">PROXIMA <span>DIGITAL</span></div>
+            <p class="loader-status-text" id="loaderStatus">INITIALIZING SYSTEMS...</p>
+            <div class="loader-progress-wrap">
+                <div class="loader-progress-track">
+                    <div class="loader-progress-bar" id="loaderProgressBar"></div>
+                </div>
+                <div class="loader-stats">
+                    <span id="loaderPercent">0%</span>
+                    <span class="loader-countdown" id="loaderCountdown">5.0s</span>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- ==========================================
+         2. BACKGROUND AMBIENT CANVAS & CURSOR
+         ========================================== -->
+    <canvas id="ambient-canvas"></canvas>
+    <div class="cursor-dot" aria-hidden="true"></div>
+    <div class="cursor-ring" aria-hidden="true"></div>
+
+    <!-- Scroll-To-Top Interactive Button -->
+    <button class="scroll-top-btn" id="scrollTopBtn" aria-label="Scroll back to top">↑</button>
+
+    <!-- ==========================================
+         3. NAVIGATION BAR
+         ========================================== -->
+    <header class="navbar" id="mainNavbar">
+        <a href="#hero" class="logo interactive" aria-label="Proxima Digital Home">
+            <div class="logo-diamond">
+                <span>P</span>
+            </div>
+            <span class="logo-text">PROXIMA <strong>DIGITAL</strong></span>
+        </a>
+
+        <nav class="nav-links" aria-label="Primary Navigation">
+            <a href="#services" class="nav-link interactive">Services</a>
+            <a href="#approach" class="nav-link interactive">Approach</a>
+            <a href="#how-it-works" class="nav-link interactive">How We Work</a>
+            <a href="#contact" class="nav-link interactive">Contact</a>
+        </nav>
+
+        <div class="nav-actions">
+            <!-- Futuristic Cosmic Theme Toggle -->
+            <div class="toggle-cont interactive" title="Toggle Theme">
+              <input class="toggle-input" id="toggle" name="toggle" type="checkbox" />
+              <label class="toggle-label" for="toggle">
+                <div class="cont-icon">
+                  <span style="--width: 2; --deg: 25; --duration: 11" class="sparkle"></span>
+                  <span style="--width: 1; --deg: 100; --duration: 18" class="sparkle"></span>
+                  <span style="--width: 1; --deg: 280; --duration: 5" class="sparkle"></span>
+                  <span style="--width: 2; --deg: 200; --duration: 3" class="sparkle"></span>
+                  <span style="--width: 2; --deg: 30; --duration: 20" class="sparkle"></span>
+                  <span style="--width: 2; --deg: 300; --duration: 9" class="sparkle"></span>
+                  <span style="--width: 1; --deg: 250; --duration: 4" class="sparkle"></span>
+                  <span style="--width: 2; --deg: 210; --duration: 8" class="sparkle"></span>
+                  <span style="--width: 2; --deg: 100; --duration: 9" class="sparkle"></span>
+                  <span style="--width: 1; --deg: 15; --duration: 13" class="sparkle"></span>
+                  <span style="--width: 1; --deg: 75; --duration: 18" class="sparkle"></span>
+                  <span style="--width: 2; --deg: 65; --duration: 6" class="sparkle"></span>
+                  <span style="--width: 2; --deg: 50; --duration: 7" class="sparkle"></span>
+                  <span style="--width: 1; --deg: 320; --duration: 5" class="sparkle"></span>
+                  <span style="--width: 1; --deg: 220; --duration: 5" class="sparkle"></span>
+                  <span style="--width: 1; --deg: 215; --duration: 2" class="sparkle"></span>
+                  <span style="--width: 2; --deg: 135; --duration: 9" class="sparkle"></span>
+                  <span style="--width: 2; --deg: 45; --duration: 4" class="sparkle"></span>
+                  <span style="--width: 1; --deg: 78; --duration: 16" class="sparkle"></span>
+                  <span style="--width: 1; --deg: 89; --duration: 19" class="sparkle"></span>
+                  <span style="--width: 2; --deg: 65; --duration: 14" class="sparkle"></span>
+                  <span style="--width: 2; --deg: 97; --duration: 1" class="sparkle"></span>
+                  <span style="--width: 1; --deg: 174; --duration: 10" class="sparkle"></span>
+                  <span style="--width: 1; --deg: 236; --duration: 5" class="sparkle"></span>
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 30 30" class="icon">
+                    <path d="M0.96233 28.61C1.36043 29.0081 1.96007 29.1255 2.47555 28.8971L10.4256 25.3552C13.2236 24.11 16.4254 24.1425 19.2107 25.4401L27.4152 29.2747C27.476 29.3044 27.5418 29.3023 27.6047 29.32C27.6563 29.3348 27.7079 29.3497 27.761 29.3574C27.843 29.3687 27.9194 29.3758 28 29.3688C28.1273 29.3617 28.2531 29.3405 28.3726 29.2945C28.4447 29.262 28.5162 29.2287 28.5749 29.1842C28.6399 29.1446 28.6993 29.0994 28.7509 29.0477L28.9008 28.8582C28.9468 28.7995 28.9793 28.7274 29.0112 28.656C29.0599 28.5322 29.0811 28.4036 29.0882 28.2734C29.0939 28.1957 29.0868 28.1207 29.0769 28.0415C29.0705 27.9955 29.0585 27.9524 29.0472 27.9072C29.0295 27.8343 29.0302 27.7601 28.9984 27.6901L25.1638 19.4855C23.8592 16.7073 23.8273 13.5048 25.0726 10.7068L28.6145 2.75679C28.8429 2.24131 28.7318 1.63531 28.3337 1.2372C27.9165 0.820011 27.271 0.721743 26.7491 0.9961L19.8357 4.59596C16.8418 6.15442 13.2879 6.18696 10.2615 4.70062L1.80308 0.520214C1.7055 0.474959 1.60722 0.441742 1.50964 0.421943C1.44459 0.409215 1.37882 0.395769 1.3074 0.402133C1.14406 0.395769 0.981436 0.428275 0.818095 0.499692C0.77284 0.519491 0.719805 0.545671 0.67455 0.578198C0.596061 0.617088 0.524653 0.675786 0.4596 0.74084C0.394546 0.805894 0.335843 0.877306 0.296245 0.956502C0.263718 1.00176 0.237561 1.05477 0.217762 1.10003C0.152708 1.24286 0.126545 1.40058 0.120181 1.54978C0.120181 1.61483 0.126527 1.6735 0.132891 1.73219C0.15269 1.85664 0.178881 1.97332 0.237571 2.08434L4.41798 10.5427C5.91139 13.5621 5.8725 17.1238 4.3204 20.1099L0.720514 27.0233C0.440499 27.5536 0.545137 28.1928 0.96233 28.61Z"></path>
+                  </svg>
+                </div>
+              </label>
+            </div>
+
+            <a href="#contact" class="nav-cta interactive">Start Conversation ↗</a>
+            <button class="mobile-menu-btn interactive" id="openMenuBtn" aria-label="Open mobile menu">☰</button>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Drawer -->
+    <div class="mobile-nav" id="mobileMenu" aria-label="Mobile Navigation Menu">
+        <button class="mobile-close-btn interactive" id="closeMenuBtn" aria-label="Close mobile menu">✕</button>
+        <a href="#services" class="nav-link interactive">Services</a>
+        <a href="#approach" class="nav-link interactive">Approach</a>
+        <a href="#how-it-works" class="nav-link interactive">How We Work</a>
+        <a href="#contact" class="nav-link interactive">Contact</a>
+    </div>
+
+    <!-- ==========================================
+         4. HERO SECTION
+         ========================================== -->
+    <div class="hero-wrapper" id="hero">
+        <main class="hero-container">
+            <section class="hero-content">
+                <div class="category-tag reveal-up">
+                    <span class="dash"></span>
+                    <span class="tag-text">ERPNext &amp; Business Consulting</span>
+                </div>
+
+                <h1 class="hero-title reveal-up delay-1">
+                    Digital systems.<br>
+                    <span class="highlight">Human clarity.</span>
+                </h1>
+
+                <p class="hero-description reveal-up delay-2">
+                    We turn complex operations into connected, practical systems—helping ambitious enterprises implement ERPNext smoothly, automate workflows, and make informed decisions.
+                </p>
+
+                <div class="cta-group reveal-up delay-3">
+                    <a href="#contact" class="btn btn-primary interactive">
+                        Book a Consultation <span class="btn-arrow">→</span>
+                    </a>
+                    <a href="#services" class="btn btn-secondary interactive">
+                        Explore Our Services <span class="btn-arrow">↓</span>
+                    </a>
+                </div>
+            </section>
+
+            <section class="hero-graphic reveal-fade delay-2" aria-hidden="true">
+                <div class="graphic-wrapper">
+                    <canvas id="heroCanvas"></canvas>
+
+                    <span class="orbit-label label-process interactive">PROCESS</span>
+                    <span class="orbit-label label-insight interactive">INSIGHT</span>
+                    <span class="orbit-label label-people interactive">PEOPLE</span>
+
+                    <div class="hub-container">
+                        <div class="bulb-glow"></div>
+                        <svg class="bulb-svg" viewBox="0 0 64 64" fill="none">
+                            <path d="M 20,38 C 14,32 12,24 18,14 C 24,4 40,4 46,14 C 52,24 50,32 44,38 C 40,42 38,46 38,50 L 26,50 C 26,46 24,42 20,38 Z" />
+                            <path class="bulb-filament" d="M 28,50 L 28,34 L 24,24 L 32,18 L 40,24 L 36,34 L 36,50" />
+                            <path d="M 32,2 L 32,6" />
+                            <path d="M 8,20 L 12,22" />
+                            <path d="M 56,20 L 52,22" />
+                        </svg>
+
+                        <div class="center-circle interactive">
+                            <h2>ERP</h2>
+                            <span>CONNECTED</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="hero-footer">
+            <span class="interactive">IMPLEMENT WITH PURPOSE</span>
+            <span class="interactive">OPERATE WITH CONFIDENCE</span>
+            <span class="interactive">GROW WITH CLARITY</span>
+        </footer>
+    </div>
+
+    <!-- ==========================================
+         5. SECTION 2: WHY PROXIMA (APPROACH)
+         ========================================== -->
+    <section class="section why-proxima-section" id="approach">
+        <div class="section-tag reveal-left">WHY PROXIMA</div>
+        <div class="why-content">
+            <h2 class="why-title reveal-up">
+                Technology should make your business feel <span class="highlight-lime">simpler.</span>
+            </h2>
+            <p class="why-description reveal-up delay-1">
+                Proxima Digital brings enterprise ERP engineering and strategic business intuition together. We listen first, architect around operational reality, and build sustainable solutions your workforce will adopt effortlessly from day one.
+            </p>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         6. SECTION 3: SERVICES
+         ========================================== -->
+    <section class="section services-section" id="services">
+        <div class="section-tag reveal-left">WHAT WE DO</div>
+        <div class="services-header">
+            <h2 class="section-title services-title reveal-up">
+                Expertise that moves your enterprise forward.
+            </h2>
+            <p class="section-subtitle services-subtitle reveal-up delay-1">
+                From initial readiness assessment to continuous optimization, we stay laser-focused on quantifiable ROI and enduring organizational adoption.
+            </p>
+        </div>
+
+        <div class="services-list">
+            <article class="service-card interactive reveal-up delay-1">
+                <div class="service-num">01</div>
+                <div class="service-icon-box">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                </div>
+                <div class="service-info">
+                    <h3>ERPNext Implementation</h3>
+                    <p>End-to-end ERPNext deployment, tailored custom doctypes, automated workflows, reliable legacy data migration, and comprehensive team training.</p>
+                </div>
+                <div class="service-arrow">↗</div>
+            </article>
+
+            <article class="service-card interactive reveal-up delay-2">
+                <div class="service-num">02</div>
+                <div class="service-icon-box">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+                </div>
+                <div class="service-info">
+                    <h3>ERP Consultation &amp; Audit</h3>
+                    <p>Objective technical audits and strategic roadmaps to scale, customize, or rescue your existing ERP system grounded directly in your daily operations.</p>
+                </div>
+                <div class="service-arrow">↗</div>
+            </article>
+
+            <article class="service-card interactive reveal-up delay-3">
+                <div class="service-num">03</div>
+                <div class="service-icon-box">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path><path d="M22 12A10 10 0 0 0 12 2v10z"></path></svg>
+                </div>
+                <div class="service-info">
+                    <h3>Business Process Re-engineering</h3>
+                    <p>Streamlining operational bottlenecks and creating agile standard operating procedures that harmonize human talent with intelligent software.</p>
+                </div>
+                <div class="service-arrow">↗</div>
+            </article>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         7. SECTION 4: HOW WE WORK (PROCESS)
+         ========================================== -->
+    <section class="section process-section" id="how-it-works">
+        <div class="section-tag reveal-left">HOW WE WORK</div>
+        <div class="process-header">
+            <h2 class="section-title process-title reveal-up">
+                A clear path from <span class="highlight-lime">complexity to control.</span>
+            </h2>
+            <p class="section-subtitle process-subtitle reveal-up delay-1">
+                Rigorous enough to guarantee reliability. Flexible enough to conform precisely to your evolving organizational dynamics.
+            </p>
+        </div>
+
+        <div class="process-grid">
+            <div class="process-card interactive reveal-up delay-1">
+                <div class="process-num">01</div>
+                <h4>Discover</h4>
+                <p>We map your current ecosystem, interview core stakeholders, and uncover operational bottlenecks and growth constraints.</p>
+            </div>
+
+            <div class="process-card interactive reveal-up delay-2">
+                <div class="process-num">02</div>
+                <h4>Design</h4>
+                <p>We architect a pragmatic blueprint covering custom doctypes, access roles, integration pipelines, and measurable milestones.</p>
+            </div>
+
+            <div class="process-card interactive reveal-up delay-3">
+                <div class="process-num">03</div>
+                <h4>Deliver</h4>
+                <p>We configure modules, validate test cases with user acceptance testing, migrate data clean, and ensure a smooth go-live.</p>
+            </div>
+
+            <div class="process-card interactive reveal-up delay-4">
+                <div class="process-num">04</div>
+                <h4>Improve</h4>
+                <p>We monitor post-launch metrics, conduct refresher coaching, and optimize analytics dashboards for continuous clarity.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         8. SECTION 5: CONTACT & CONSULTANT
+         ========================================== -->
+    <section class="cta-section" id="contact">
+        <div class="cta-card reveal-up">
+            <div class="cta-left reveal-left">
+                <div class="section-tag">LET'S TALK</div>
+                <h2 class="cta-title">Ready to make your business operate <span class="highlight-lime">seamlessly?</span></h2>
+                <p class="cta-desc">
+                    Schedule a strategic discovery session with Mr. Adil Usman to review your current architecture, plan your ERPNext rollout, or solve existing operational gridlocks.
+                </p>
+                <div class="cta-buttons">
+                    <a href="mailto:adilgud1@gmail.com" class="btn-email interactive">
+                        Send An Email <span>→</span>
+                    </a>
+                    <a href="tel:03132662225" class="btn-phone interactive">Direct Call: 0313 2662225</a>
+                </div>
+            </div>
+
+            <aside class="cta-right reveal-right" aria-label="Consultant Bio">
+                <div class="consultant-badge">
+                    <span>P</span>
+                </div>
+                <div>
+                    <div class="consultant-tag">LEAD STRATEGIST</div>
+                    <div class="consultant-name">Mr. Adil Usman</div>
+                    <div class="consultant-role">Principal ERPNext &amp; Business Consultant</div>
+                    <div class="consultant-details">
+                        <div class="contact-item">
+                            <span class="contact-icon">
+                                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                            </span>
+                            <a href="tel:03132662225" class="interactive">0313 2662225</a>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">
+                                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                            </span>
+                            <a href="mailto:adilgud1@gmail.com" class="interactive">adilgud1@gmail.com</a>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">
+                                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                            </span>
+                            <span>Available for Nationwide &amp; Global Consulting</span>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         9. FOOTER
+         ========================================== -->
+    <footer class="main-footer">
+        <div class="footer-left">
+            <div class="logo-diamond" style="width: 22px; height: 22px;">
+                <span style="font-size: 0.7rem;">P</span>
+            </div>
+            <span class="logo-text">PROXIMA <strong>DIGITAL</strong></span>
+        </div>
+        <div class="footer-center">
+            Enterprise ERPNext implementation and strategic business engineering.
+        </div>
+        <div class="footer-right">
+            © 2026 Proxima Digital. All rights reserved.
+        </div>
+    </footer>
+
+    <!-- Clean External JavaScript File -->
+    <script src="Script.js"></script>
+</body>
+</html>
