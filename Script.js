@@ -91,6 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const newTheme = toggleInput.checked ? 'light' : 'dark';
                 document.documentElement.setAttribute('data-theme', newTheme);
                 localStorage.setItem('proxima_theme', newTheme);
+                window.dispatchEvent(new Event('themeToggle'));
             });
         }
     };
@@ -513,15 +514,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const getMultiplier = () => {
             const w = window.innerWidth;
-            if (w < 480) return 0.36;
-            if (w < 768) return 0.55;
-            if (w < 1024) return 0.78;
+            if (w < 380) return 0.28;
+            if (w < 480) return 0.35;
+            if (w < 640) return 0.46;
+            if (w < 768) return 0.58;
+            if (w < 1024) return 0.74;
+            if (w < 1280) return 0.88;
             return 1.0;
         };
 
         // Render cards into circular 5-slot arrangement
         const render = (immediate = false) => {
             const mult = getMultiplier();
+            const w = window.innerWidth;
+            const isSmallMobile = w < 480;
 
             for (let slot = 0; slot < 5; slot++) {
                 // Circular mapping: card index for this slot
@@ -532,12 +538,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 const cfg = BASE_SLOTS[slot];
                 const tx = cfg.x * mult;
-                const ty = cfg.y * (mult < 0.6 ? 0.6 : 1.0);
-                const rot = cfg.rot * (mult < 0.6 ? 0.7 : 1.0);
+                const ty = cfg.y * (mult < 0.6 ? 0.55 : 1.0);
+                const rot = cfg.rot * (mult < 0.6 ? 0.65 : 1.0);
                 const isCenter = slot === 2;
 
+                // On small mobile, fade outer edge cards so center card is crystal clear
+                let opacity = cfg.opacity;
+                let scale = cfg.scale;
+                if (isSmallMobile) {
+                    if (slot === 0 || slot === 4) {
+                        opacity = 0.35;
+                        scale = 0.72;
+                    } else if (slot === 1 || slot === 3) {
+                        opacity = 0.82;
+                        scale = 0.88;
+                    } else {
+                        opacity = 1.0;
+                        scale = 1.02;
+                    }
+                }
+
                 card.style.zIndex = cfg.z;
-                card.style.opacity = cfg.opacity;
+                card.style.opacity = opacity;
                 card.style.pointerEvents = 'auto';
 
                 if (immediate) {
@@ -546,12 +568,26 @@ document.addEventListener('DOMContentLoaded', () => {
                     card.style.transition = 'transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease, box-shadow 0.6s ease';
                 }
 
-                card.style.transform = `translateX(${tx}px) translateY(${ty}px) rotate(${rot}deg) scale(${cfg.scale})`;
+                card.style.transform = `translateX(${tx}px) translateY(${ty}px) rotate(${rot}deg) scale(${scale})`;
+
+                const title = card.querySelector('.fan-card-title');
+                const desc  = card.querySelector('.fan-card-desc');
+                const num   = card.querySelector('.fan-card-num');
+                const tag   = card.querySelector('.fan-card-tag');
+                const isLight = document.documentElement.getAttribute('data-theme') === 'light';
 
                 if (isCenter) {
                     card.classList.add('is-active');
+                    if (title) title.style.color = '#ffffff';
+                    if (desc)  desc.style.color  = '#f1f5f9';
+                    if (num)   num.style.color   = '#60a5fa';
+                    if (tag)   tag.style.color   = '#93c5fd';
                 } else {
                     card.classList.remove('is-active');
+                    if (title) title.style.color = isLight ? '#0f172a' : '#f5f7fa';
+                    if (desc)  desc.style.color  = isLight ? '#334155' : '#9aa1b2';
+                    if (num)   num.style.color   = isLight ? '#2563eb' : '#4f8ef7';
+                    if (tag)   tag.style.color   = isLight ? '#64748b' : '#656c7d';
                 }
             }
 
@@ -579,6 +615,13 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
 
+        // Theme toggle listener to re-render card text colors immediately
+        window.addEventListener('themeToggle', () => render(true));
+
+        // Cursor grabber cues
+        stage.addEventListener('mouseenter', () => document.body.classList.add('cursor-in-fan'));
+        stage.addEventListener('mouseleave', () => document.body.classList.remove('cursor-in-fan'));
+
         // Window resize adjustment
         window.addEventListener('resize', () => {
             if (!isAnimating) render(true);
@@ -601,9 +644,11 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
 
-        // Click any non-centered card to bring it to center
+        // Click any non-centered card to bring it to center (only if not dragged)
+        let hasDragged = false;
         cards.forEach(card => {
-            card.addEventListener('click', () => {
+            card.addEventListener('click', (e) => {
+                if (hasDragged) return;
                 if (isAnimating) return;
                 const idx = parseInt(card.dataset.index, 10);
                 if (idx === centerIdx) return;
@@ -614,6 +659,55 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
 
+        // Mouse Grab & Drag Engine
+        let isPointerDown = false;
+        let startX = 0;
+        let deltaX = 0;
+
+        const onPointerStart = (clientX) => {
+            if (isAnimating) return;
+            isPointerDown = true;
+            hasDragged = false;
+            startX = clientX;
+            deltaX = 0;
+            stage.classList.add('is-dragging');
+        };
+
+        const onPointerMove = (clientX) => {
+            if (!isPointerDown) return;
+            deltaX = clientX - startX;
+            if (Math.abs(deltaX) > 8) {
+                hasDragged = true;
+            }
+        };
+
+        const onPointerEnd = () => {
+            if (!isPointerDown) return;
+            isPointerDown = false;
+            stage.classList.remove('is-dragging');
+            if (Math.abs(deltaX) > 40) {
+                cycle(deltaX < 0 ? 1 : -1);
+            }
+            setTimeout(() => { hasDragged = false; }, 80);
+        };
+
+        // Mouse Drag events
+        stage.addEventListener('mousedown', (e) => onPointerStart(e.clientX));
+        window.addEventListener('mousemove', (e) => onPointerMove(e.clientX));
+        window.addEventListener('mouseup', onPointerEnd);
+
+        // Touch Swipe / Drag events
+        stage.addEventListener('touchstart', (e) => {
+            if (e.touches.length) onPointerStart(e.touches[0].clientX);
+        }, { passive: true });
+
+        stage.addEventListener('touchmove', (e) => {
+            if (e.touches.length) onPointerMove(e.touches[0].clientX);
+        }, { passive: true });
+
+        stage.addEventListener('touchend', onPointerEnd, { passive: true });
+        stage.addEventListener('touchcancel', onPointerEnd, { passive: true });
+
         // Keyboard navigation
         document.addEventListener('keydown', (e) => {
             const rect = stage.getBoundingClientRect();
@@ -621,14 +715,6 @@ document.addEventListener('DOMContentLoaded', () => {
             if (e.key === 'ArrowLeft')  cycle(-1);
             if (e.key === 'ArrowRight') cycle(1);
         });
-
-        // Touch swipe support
-        let touchStartX = 0;
-        stage.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
-        stage.addEventListener('touchend',   e => {
-            const dx = e.changedTouches[0].clientX - touchStartX;
-            if (Math.abs(dx) > 40) cycle(dx < 0 ? 1 : -1);
-        }, { passive: true });
     };
 
     /* ==========================================================================
