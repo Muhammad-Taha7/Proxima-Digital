@@ -441,7 +441,7 @@
     </section>
 
     <!-- ==========================================
-         6. SECTION 3: SERVICES
+         6. SECTION 3: SERVICES (FAN CARD SLIDER)
          ========================================== -->
     <section class="section services-section" id="services">
         <div class="section-tag reveal-left">WHAT WE DO</div>
@@ -454,42 +454,108 @@
             </p>
         </div>
 
-        <div class="services-list">
-            <article class="service-card interactive reveal-up delay-1">
-                <div class="service-num">01</div>
-                <div class="service-icon-box">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
-                </div>
-                <div class="service-info">
-                    <h3>ERPNext Implementation</h3>
-                    <p>End-to-end ERPNext deployment, tailored custom doctypes, automated workflows, reliable legacy data migration, and comprehensive team training.</p>
-                </div>
-                <div class="service-arrow">↗</div>
-            </article>
+        <!-- Fan Card Slider -->
+        <div class="fan-slider-wrapper reveal-up delay-2">
+            <div class="fan-slider-stage" id="fanSliderStage">
 
-            <article class="service-card interactive reveal-up delay-2">
-                <div class="service-num">02</div>
-                <div class="service-icon-box">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+                <!-- Card 1: ERPNext Implementation -->
+                <div class="fan-card" data-index="0">
+                    <div class="fan-card-inner">
+                        <div class="fan-card-icon">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                        </div>
+                        <div class="fan-card-num">01</div>
+                        <h3 class="fan-card-title">ERPNext Implementation</h3>
+                        <p class="fan-card-desc">End-to-end ERPNext deployment, tailored custom doctypes, automated workflows, reliable legacy data migration, and comprehensive team training for lasting adoption.</p>
+                        <div class="fan-card-footer">
+                            <span class="fan-card-tag">Core Service</span>
+                            <span class="fan-card-arrow">↗</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="service-info">
-                    <h3>ERP Consultation &amp; Audit</h3>
-                    <p>Objective technical audits and strategic roadmaps to scale, customize, or rescue your existing ERP system grounded directly in your daily operations.</p>
-                </div>
-                <div class="service-arrow">↗</div>
-            </article>
 
-            <article class="service-card interactive reveal-up delay-3">
-                <div class="service-num">03</div>
-                <div class="service-icon-box">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path><path d="M22 12A10 10 0 0 0 12 2v10z"></path></svg>
+                <!-- Card 2: ERP Consultation -->
+                <div class="fan-card" data-index="1">
+                    <div class="fan-card-inner">
+                        <div class="fan-card-icon">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+                        </div>
+                        <div class="fan-card-num">02</div>
+                        <h3 class="fan-card-title">ERP Consultation &amp; Audit</h3>
+                        <p class="fan-card-desc">Objective technical audits and strategic roadmaps to scale, customize, or rescue your existing ERP system — grounded directly in your daily operational reality.</p>
+                        <div class="fan-card-footer">
+                            <span class="fan-card-tag">Strategy</span>
+                            <span class="fan-card-arrow">↗</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="service-info">
-                    <h3>Business Process Re-engineering</h3>
-                    <p>Streamlining operational bottlenecks and creating agile standard operating procedures that harmonize human talent with intelligent software.</p>
+
+                <!-- Card 3: Business Process Re-engineering -->
+                <div class="fan-card" data-index="2">
+                    <div class="fan-card-inner">
+                        <div class="fan-card-icon">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path><path d="M22 12A10 10 0 0 0 12 2v10z"></path></svg>
+                        </div>
+                        <div class="fan-card-num">03</div>
+                        <h3 class="fan-card-title">Process Re-engineering</h3>
+                        <p class="fan-card-desc">Streamlining operational bottlenecks and creating agile SOPs that harmonize human talent with intelligent software for measurable business efficiency gains.</p>
+                        <div class="fan-card-footer">
+                            <span class="fan-card-tag">Optimization</span>
+                            <span class="fan-card-arrow">↗</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="service-arrow">↗</div>
-            </article>
+
+                <!-- Card 4: Workflow Automation -->
+                <div class="fan-card" data-index="3">
+                    <div class="fan-card-inner">
+                        <div class="fan-card-icon">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 3 21 3 21 8"></polyline><line x1="4" y1="20" x2="21" y2="3"></line><polyline points="21 16 21 21 16 21"></polyline><line x1="15" y1="15" x2="21" y2="21"></line></svg>
+                        </div>
+                        <div class="fan-card-num">04</div>
+                        <h3 class="fan-card-title">Workflow Automation</h3>
+                        <p class="fan-card-desc">Designing intelligent automation pipelines — from approval chains to cross-department triggers — that eliminate manual overhead and accelerate enterprise velocity.</p>
+                        <div class="fan-card-footer">
+                            <span class="fan-card-tag">Automation</span>
+                            <span class="fan-card-arrow">↗</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 5: Training & Change Management -->
+                <div class="fan-card" data-index="4">
+                    <div class="fan-card-inner">
+                        <div class="fan-card-icon">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                        </div>
+                        <div class="fan-card-num">05</div>
+                        <h3 class="fan-card-title">Training &amp; Change Management</h3>
+                        <p class="fan-card-desc">Hands-on coaching, structured onboarding programs, and organizational change frameworks ensuring your teams adopt new systems with confidence and clarity.</p>
+                        <div class="fan-card-footer">
+                            <span class="fan-card-tag">People</span>
+                            <span class="fan-card-arrow">↗</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div><!-- end fan-slider-stage -->
+
+            <!-- Navigation Controls -->
+            <div class="fan-slider-controls">
+                <button class="fan-nav-btn fan-prev" id="fanPrev" aria-label="Previous service card">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                </button>
+                <div class="fan-dots" id="fanDots">
+                    <span class="fan-dot active" data-dot="0"></span>
+                    <span class="fan-dot" data-dot="1"></span>
+                    <span class="fan-dot" data-dot="2"></span>
+                    <span class="fan-dot" data-dot="3"></span>
+                    <span class="fan-dot" data-dot="4"></span>
+                </div>
+                <button class="fan-nav-btn fan-next" id="fanNext" aria-label="Next service card">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </button>
+            </div>
         </div>
     </section>
 

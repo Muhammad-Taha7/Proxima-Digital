@@ -140,7 +140,7 @@ document.addEventListener('DOMContentLoaded', () => {
             ctx.clearRect(0, 0, width, height);
 
             const isLight = document.documentElement.getAttribute('data-theme') === 'light';
-            const particleColor = isLight ? '124, 179, 5' : '204, 255, 0';
+            const particleColor = isLight ? '37, 99, 235' : '79, 142, 247';
 
             for (let i = 0; i < dots.length; i++) {
                 const d = dots[i];
@@ -250,7 +250,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const cx = canvas.width / 2;
             const cy = canvas.height / 2;
             const isLight = document.documentElement.getAttribute('data-theme') === 'light';
-            const lime = isLight ? '#7cb305' : '#ccff00';
+            const lime = isLight ? '#2563eb' : '#4f8ef7';
             const ringColor = isLight ? 'rgba(0, 0, 0, 0.08)' : 'rgba(255, 255, 255, 0.1)';
 
             const rInner = Math.min(cx, cy) * 0.54;
@@ -269,7 +269,7 @@ document.addEventListener('DOMContentLoaded', () => {
             ctx.beginPath();
             ctx.arc(cx, cy, rInner, 0, Math.PI * 2);
             ctx.setLineDash([]);
-            ctx.strokeStyle = isLight ? 'rgba(124, 179, 5, 0.25)' : 'rgba(204, 255, 0, 0.25)';
+            ctx.strokeStyle = isLight ? 'rgba(37, 99, 235, 0.25)' : 'rgba(79, 142, 247, 0.25)';
             ctx.lineWidth = 1.2;
             ctx.stroke();
 
@@ -291,7 +291,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 ctx.beginPath();
                 ctx.moveTo(cx, cy);
                 ctx.lineTo(x, y);
-                ctx.strokeStyle = isLight ? 'rgba(124, 179, 5, 0.08)' : 'rgba(204, 255, 0, 0.08)';
+                ctx.strokeStyle = isLight ? 'rgba(37, 99, 235, 0.08)' : 'rgba(79, 142, 247, 0.08)';
                 ctx.lineWidth = 0.7;
                 ctx.stroke();
 
@@ -485,6 +485,153 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     /* ==========================================================================
+       11. Fan Card Slider — Services Section (Large 5-Card Deck)
+       ========================================================================== */
+    const initFanSlider = () => {
+        const stage     = document.getElementById('fanSliderStage');
+        const prevBtn   = document.getElementById('fanPrev');
+        const nextBtn   = document.getElementById('fanNext');
+        const dotsWrap  = document.getElementById('fanDots');
+        if (!stage || !prevBtn || !nextBtn) return;
+
+        const cards     = Array.from(stage.querySelectorAll('.fan-card'));
+        const dots      = dotsWrap ? Array.from(dotsWrap.querySelectorAll('.fan-dot')) : [];
+        const total     = cards.length;
+        if (!total) return;
+
+        // Base 5-slot fan parameters (centered at slot 2)
+        const BASE_SLOTS = [
+            { rot: -16, x: -360, y: 35, scale: 0.82, z: 1, opacity: 0.65 },
+            { rot:  -8, x: -180, y: 12, scale: 0.92, z: 4, opacity: 0.88 },
+            { rot:   0, x:    0, y:  0, scale: 1.04, z: 10, opacity: 1.0 },
+            { rot:   8, x:  180, y: 12, scale: 0.92, z: 4, opacity: 0.88 },
+            { rot:  16, x:  360, y: 35, scale: 0.82, z: 1, opacity: 0.65 },
+        ];
+
+        let centerIdx = 0; // Currently focused card index
+        let isAnimating = false;
+
+        const getMultiplier = () => {
+            const w = window.innerWidth;
+            if (w < 480) return 0.36;
+            if (w < 768) return 0.55;
+            if (w < 1024) return 0.78;
+            return 1.0;
+        };
+
+        // Render cards into circular 5-slot arrangement
+        const render = (immediate = false) => {
+            const mult = getMultiplier();
+
+            for (let slot = 0; slot < 5; slot++) {
+                // Circular mapping: card index for this slot
+                // slot 0 is center - 2, slot 1 is center - 1, slot 2 is center, etc.
+                const cardIdx = ((centerIdx + (slot - 2)) % total + total) % total;
+                const card = cards[cardIdx];
+                if (!card) continue;
+
+                const cfg = BASE_SLOTS[slot];
+                const tx = cfg.x * mult;
+                const ty = cfg.y * (mult < 0.6 ? 0.6 : 1.0);
+                const rot = cfg.rot * (mult < 0.6 ? 0.7 : 1.0);
+                const isCenter = slot === 2;
+
+                card.style.zIndex = cfg.z;
+                card.style.opacity = cfg.opacity;
+                card.style.pointerEvents = 'auto';
+
+                if (immediate) {
+                    card.style.transition = 'none';
+                } else {
+                    card.style.transition = 'transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease, box-shadow 0.6s ease';
+                }
+
+                card.style.transform = `translateX(${tx}px) translateY(${ty}px) rotate(${rot}deg) scale(${cfg.scale})`;
+
+                if (isCenter) {
+                    card.classList.add('is-active');
+                } else {
+                    card.classList.remove('is-active');
+                }
+            }
+
+            // Update pagination dots
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === centerIdx);
+            });
+        };
+
+        const cycle = (dir) => {
+            if (isAnimating) return;
+            isAnimating = true;
+            centerIdx = ((centerIdx + dir) % total + total) % total;
+            render(false);
+            setTimeout(() => { isAnimating = false; }, 550);
+        };
+
+        // Initial setup
+        render(true);
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+                cards.forEach(c => {
+                    c.style.transition = 'transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease, box-shadow 0.6s ease';
+                });
+            });
+        });
+
+        // Window resize adjustment
+        window.addEventListener('resize', () => {
+            if (!isAnimating) render(true);
+        });
+
+        // Controls
+        prevBtn.addEventListener('click', () => cycle(-1));
+        nextBtn.addEventListener('click', () => cycle(1));
+
+        // Dot click handlers
+        dots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                if (isAnimating) return;
+                const target = parseInt(dot.dataset.dot, 10);
+                if (target === centerIdx) return;
+                isAnimating = true;
+                centerIdx = target;
+                render(false);
+                setTimeout(() => { isAnimating = false; }, 550);
+            });
+        });
+
+        // Click any non-centered card to bring it to center
+        cards.forEach(card => {
+            card.addEventListener('click', () => {
+                if (isAnimating) return;
+                const idx = parseInt(card.dataset.index, 10);
+                if (idx === centerIdx) return;
+                isAnimating = true;
+                centerIdx = idx;
+                render(false);
+                setTimeout(() => { isAnimating = false; }, 550);
+            });
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            const rect = stage.getBoundingClientRect();
+            if (rect.bottom < 0 || rect.top > window.innerHeight) return;
+            if (e.key === 'ArrowLeft')  cycle(-1);
+            if (e.key === 'ArrowRight') cycle(1);
+        });
+
+        // Touch swipe support
+        let touchStartX = 0;
+        stage.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+        stage.addEventListener('touchend',   e => {
+            const dx = e.changedTouches[0].clientX - touchStartX;
+            if (Math.abs(dx) > 40) cycle(dx < 0 ? 1 : -1);
+        }, { passive: true });
+    };
+
+    /* ==========================================================================
        Initialize All Systems
        ========================================================================== */
     initPreloader();
@@ -497,4 +644,5 @@ document.addEventListener('DOMContentLoaded', () => {
     initMobileNav();
     initScrollTop();
     initSmoothScroll();
+    initFanSlider();
 });
