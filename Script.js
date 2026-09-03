@@ -526,12 +526,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const getMultiplier = () => {
             const w = window.innerWidth;
-            if (w < 380) return 0.28;
-            if (w < 480) return 0.35;
-            if (w < 640) return 0.46;
-            if (w < 768) return 0.58;
-            if (w < 1024) return 0.74;
-            if (w < 1280) return 0.88;
+            if (w < 380) return 0.16;
+            if (w < 480) return 0.22;
+            if (w < 640) return 0.32;
+            if (w < 768) return 0.45;
+            if (w < 1024) return 0.65;
+            if (w < 1280) return 0.85;
             return 1.0;
         };
 
