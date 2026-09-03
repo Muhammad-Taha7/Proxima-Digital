@@ -2807,8 +2807,10 @@ body.cursor-in-fan .cursor-ring {
     }
 
     .alliances-container {
-        grid-template-columns: 1fr;
+        display: flex;
+        flex-direction: column;
         gap: 3rem;
+        width: 100%;
     }
 
     .alliances-desc {
@@ -2816,8 +2818,18 @@ body.cursor-in-fan .cursor-ring {
     }
 
     .alliances-grid {
-        grid-template-columns: repeat(3, 1fr);
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
         gap: 1.2rem;
+        width: 100%;
+    }
+
+    .partner-card {
+        flex: 0 0 calc(33.333% - 0.8rem);
+        max-width: calc(33.333% - 0.8rem);
+        width: calc(33.333% - 0.8rem);
+        height: 125px;
     }
 }
 
