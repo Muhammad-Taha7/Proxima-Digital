@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
             { at: 900, text: 'SYSTEMS ONLINE. WELCOME.' }
         ];
 
-        const TOTAL_DURATION = 1000;
+        const TOTAL_DURATION = 2000;
         const startTime = performance.now();
 
         const updateLoader = (now) => {
